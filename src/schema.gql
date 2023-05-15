@@ -2,9 +2,16 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type Post {
+  id: Int!
+  title: String!
+  content: String
+}
+
 type Query {
   """Hola mundo es lo que retorna"""
   hola: String!
   randomNumber: Float!
   randomFromZeroTo(max: Int): Int!
+  post: [Post!]!
 }
