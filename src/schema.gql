@@ -15,3 +15,12 @@ type Query {
   randomFromZeroTo(max: Int): Int!
   post: [Post!]!
 }
+
+type Mutation {
+  createPost(post: CreateDto!): Post!
+}
+
+input CreateDto {
+  title: String!
+  content: String!
+}
