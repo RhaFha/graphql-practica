@@ -9,8 +9,9 @@ type Post {
 }
 
 type Author {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  id: Int!
+  name: String!
+  posts: [Post!]
 }
 
 type Query {
