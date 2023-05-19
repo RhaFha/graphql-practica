@@ -4,10 +4,12 @@ import { IsNotEmpty, IsString } from 'class-validator';
 @InputType()
 export class CreateDto {
   @Field()
-  @IsString()
+  @IsString({
+    message: 'Tiene que ser string',
+  })
   @IsNotEmpty()
   title: string;
 
-  @Field()
-  content: string;
+  @Field({ nullable: true })
+  content?: string;
 }

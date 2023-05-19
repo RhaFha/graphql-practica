@@ -7,6 +7,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './posts/post.entity';
+import { AuthorsModule } from './authors/authors.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { Post } from './posts/post.entity';
     }),
     HelloWordModule,
     PostsModule,
+    AuthorsModule,
   ],
   controllers: [],
   providers: [],

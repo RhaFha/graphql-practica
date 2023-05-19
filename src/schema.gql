@@ -8,19 +8,41 @@ type Post {
   content: String
 }
 
+type Author {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
 type Query {
   """Hola mundo es lo que retorna"""
   hola: String!
   randomNumber: Float!
   randomFromZeroTo(max: Int): Int!
-  post: [Post!]!
+  posts: [Post!]!
+  post(id: Int!): Post!
+  authors: [Author!]!
+  author(id: Int!): Author!
 }
 
 type Mutation {
   createPost(post: CreateDto!): Post!
+  createAuthor(createAuthorInput: CreateAuthorInput!): Author!
+  updateAuthor(updateAuthorInput: UpdateAuthorInput!): Author!
+  removeAuthor(id: Int!): Author!
 }
 
 input CreateDto {
   title: String!
-  content: String!
+  content: String
+}
+
+input CreateAuthorInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateAuthorInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
 }
