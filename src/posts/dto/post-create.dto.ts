@@ -1,5 +1,6 @@
 import { Field, InputType } from '@nestjs/graphql';
-import { IsNotEmpty, IsString } from 'class-validator';
+import { IsInt, IsNotEmpty, IsString } from 'class-validator';
+import { Author } from 'src/authors/entities/author.entity';
 
 @InputType()
 export class CreateDto {
@@ -12,4 +13,9 @@ export class CreateDto {
 
   @Field({ nullable: true })
   content?: string;
+
+  @IsInt()
+  @IsNotEmpty()
+  @Field()
+  authorId: number;
 }

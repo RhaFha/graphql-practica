@@ -23,5 +23,5 @@ export class Post {
 
   @ManyToOne(() => Author, (author) => author.posts)
   @Field()
-  autor: Author;
+  author: Author;
 }

@@ -13,7 +13,7 @@ export class Author {
   @Field()
   name: string;
 
-  @OneToMany(() => Post, (post) => post.autor)
+  @OneToMany(() => Post, (post) => post.author)
   @Field(() => [Post], { nullable: true })
   posts: Post[];
 }

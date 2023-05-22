@@ -1,8 +1,17 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  Int,
+  ResolveField,
+  Parent,
+} from '@nestjs/graphql';
 import { AuthorsService } from './authors.service';
 import { Author } from './entities/author.entity';
 import { CreateAuthorInput } from './dto/create-author.input';
 import { UpdateAuthorInput } from './dto/update-author.input';
+import { Post } from 'src/posts/post.entity';
 
 @Resolver(() => Author)
 export class AuthorsResolver {
@@ -18,6 +27,11 @@ export class AuthorsResolver {
   @Query(() => [Author], { name: 'authors' })
   findAll() {
     return this.authorsService.findAll();
+  }
+
+  @ResolveField(() => [Post])
+  author(@Parent() author: Author) {
+    return this.authorsService.getPosts(author.id);
   }
 
   @Query(() => Author, { name: 'author' })

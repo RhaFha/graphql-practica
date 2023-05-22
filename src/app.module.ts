@@ -7,6 +7,7 @@ import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin
 import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './posts/post.entity';
+import { Author } from './authors/entities/author.entity';
 import { AuthorsModule } from './authors/authors.module';
 
 @Module({
@@ -14,7 +15,7 @@ import { AuthorsModule } from './authors/authors.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'database.sqlite',
-      entities: [Post],
+      entities: [Post, Author],
       synchronize: true,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
