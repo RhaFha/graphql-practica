@@ -12,10 +12,14 @@ import { Author } from './entities/author.entity';
 import { CreateAuthorInput } from './dto/create-author.input';
 import { UpdateAuthorInput } from './dto/update-author.input';
 import { Post } from 'src/posts/post.entity';
+import { PostsService } from 'src/posts/posts.service';
 
 @Resolver(() => Author)
 export class AuthorsResolver {
-  constructor(private readonly authorsService: AuthorsService) {}
+  constructor(
+    private authorsService: AuthorsService,
+    private postsService: PostsService,
+  ) {}
 
   @Mutation(() => Author)
   createAuthor(
@@ -30,8 +34,8 @@ export class AuthorsResolver {
   }
 
   @ResolveField(() => [Post])
-  author(@Parent() author: Author) {
-    return this.authorsService.getPosts(author.id);
+  posts(@Parent() author: Author) {
+    return this.postsService.getPosts(author.id);
   }
 
   @Query(() => Author, { name: 'author' })
